@@ -1,0 +1,70 @@
+$blue: #4295d5
+$dark-blue: #377db4
+$light-blue: #d3e9f9
+$grey: #999999
+$white: #ffffff
+$retina: "(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)"
+
+*
+  margin: 0
+  padding: 0
+  font-weight: normal
+
+img, fieldset, button
+  border: none
+  padding: 0
+  margin: 0
+
+img
+  max-width: 100%
+
+ul
+  list-style: none
+
+a:focus, button:focus
+  outline: none
+
+body
+  font: 13px 'MuseoSans-300', 'Arial', sans-serif
+  color: #666
+  background: #e2e2e2
+
+body *
+  box-sizing: border-box
+
+.group:before,
+.group:after
+  content: ""
+  display: table
+
+.group:after
+  clear: both
+
+.capitalize
+  text-transform: capitalize
+
+.outer-container
+  background: #F8F7F4
+  position: relative
+
+.container
+  overflow: hidden
+  width: 945px
+  margin: 0 auto 60px
+  border-radius: 5px
+  font-size: 15px
+  line-height: 20px
+  position: relative
+  top: -50px
+  z-index: 99999
+
+.tag
+  color: $white
+  padding: 0.25em 0.35em
+  display: inline-block
+  margin: 0.25em 0
+  margin-right: 0.50em
+  &.tag-new
+    background-color: $blue
+  &.tag-updated
+    background-color: $grey

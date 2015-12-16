@@ -1,21 +1,23 @@
-
 default: &default
-  adapter: postgresql
+  host: localhost
   encoding: unicode
+  adapter: postgresql
   pool: 5
+  timeout: 5000
+  username: postgres
 
 development:
   <<: *default
-  database: live_maps_development
-  username: postgres
+  database: ocean_data_viewer_development
 
 test:
   <<: *default
-  database: live_maps_test
-  username: postgres
+  database: ocean_data_viewer_test
 
 production:
   <<: *default
-  database: live_maps_production
-  username: live_maps
-  password: <%= ENV['LIVE_MAPS_DATABASE_PASSWORD'] %>
+  database: ocean_data_viewer_production
+
+staging:
+  <<: *default
+  database: ocean_data_viewer_staging

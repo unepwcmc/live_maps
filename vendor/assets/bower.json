@@ -1,7 +1,10 @@
 {
   "name": "dsl-generated dependencies",
   "dependencies": {
+    "leaflet": "latest",
+    "esri-leaflet": "0.0.1-beta.4",
     "angular": "latest",
-    "bootstrap-sass-official": "latest"
+    "angularjs-rails-resource": "latest",
+    "spectrum": "latest"
   }
 }

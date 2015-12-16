@@ -1,0 +1,24 @@
+.options {
+  max-width: 62em;
+}
+
+.options input {
+  position: static;
+  margin: 1.5em 0;
+}
+
+.options input + label {
+  font-weight: normal;
+  vertical-align: middle;
+  margin: 0 1em;
+  display: inline-block;
+  width: 150px;
+}
+
+.radio input + label {
+  width: 120px;
+}
+
+.long-text {
+  width: 36em;
+}

@@ -1,12 +1,14 @@
 require File.expand_path('../boot', __FILE__)
 
-require 'rails/all'
+# Pick the frameworks you want:
+require "rails/all"
+require "dependor/shorty"
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module LiveMaps
+module OceanDataViewer
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -16,11 +18,18 @@ module LiveMaps
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
 
+    config.autoload_paths += %W(#{config.root}/lib #{config.root}/serializers #{config.root}/presenters)
+
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # Do not swallow errors in after_commit/after_rollback callbacks.
-    config.active_record.raise_in_transactional_callbacks = true
+    config.assets.paths << "#{Rails.root}/vendor/assets/bower_components"
+
+     # Add path to fonts
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
+
+    # Precompile fonts
+    config.assets.precompile += %w( .svg .eot .woff .ttf )
   end
 end

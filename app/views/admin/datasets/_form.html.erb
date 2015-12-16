@@ -1,0 +1,170 @@
+<%= form_for([:admin, @dataset], :html => { :multipart => true }) do |f| %>
+  <% if @dataset.errors.any? %>
+    <ul>
+      <% @dataset.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <p>
+    <%= f.label :title %><br />
+    <%= f.text_field :title, class: 'long-text' %>
+  </p>
+
+  <p>
+    <%= f.label :tags_array, 'Alternate Search Keywords' %><br />
+    <%= f.text_area :tags_array, class: 'tag-field', data: {tags: @tags.try(:map) {|t| {id: t, text: t}} } %><br>
+    <i>Tag this dataset with alternate keywords that will be picked up on in the search</i>
+  </p>
+
+  <p>
+    <%= f.label :version %><br />
+    <%= f.text_field :version %>
+  </p>
+
+  <p>
+    <%= f.label :order_number %><br />
+    <%= f.text_field :order_number %>
+  </p>
+
+  <p>
+    <%= f.label :short_desc %><br />
+    <%= f.text_area :short_desc %>
+    <br /><small>To add links, use the format "text":http://example.com</small>
+  </p>
+
+  <p>
+    <%= f.label :long_desc %><br />
+    <%= f.text_area :long_desc %>
+    <br /><small>To add links, use the format "text":http://example.com</small>
+  </p>
+
+  <p>
+    <%= f.label 'Citation' %><br />
+    <%= f.text_area :metadata_description %>
+    <br /><small>To add links, use the format "text":http://example.com</small>
+  </p>
+
+  <p>
+    <%= f.label 'Publication date' %><br/>
+    <%= f.number_field :creation_date, step: 1, in: 1900...Time.now.year+1 %>
+  </p>
+
+  <p>
+    <%= f.label :time_range_start, 'Time range' %><br/>
+    <%= f.number_field :time_range_start, step: 1, in: 1900...Time.now.year+1 %>
+    -
+    <%= f.number_field :time_range_end, step: 1, in: 1900...Time.now.year+1 %>
+  </p>
+
+  <p class="options">
+    <%= f.label :data_categories %><br/>
+    <%= f.collection_check_boxes :data_category_ids, data_categories, :id, :name %>
+  </p>
+
+  <p class="options radio">
+    <%= f.label :format, 'Data format' %><br/>
+    <%= f.collection_check_boxes :data_format_ids, data_formats, :id, :name %>
+  </p>
+
+  <p class="options radio">
+    <%= f.label 'Data types:' %><br/>
+    <%= f.collection_check_boxes :observation_type_ids, observation_types, :id, :name %>
+  </p>
+
+  <p class="options radio">
+    <%= f.label :geographical_range %><br/>
+    <% geographical_ranges.each do |option| %>
+      <%= f.radio_button :geographical_range, option.id %>
+      <%= f.label :geographical_range, option.name.humanize, value: option.id %>
+    <% end %>
+  </p>
+
+  <p>
+    <%= f.label :data_provider %><br/>
+    <%= f.text_field :data_provider %>
+  <p>
+
+  <p>
+    <%= f.label 'Metadata file' %><br/>
+    <%= f.file_field :factsheet %>
+  </p>
+
+  <p>
+    <%= f.label 'Factsheet' %><br/>
+    <%= f.text_field :factsheet_url %>
+  </p>
+
+  <p>
+    <%= f.label :shp_download %><br />
+    <%= f.text_field :shp_download, class: 'long-text' %>
+  </p>
+
+  <p>
+    <%= f.label :arcgis_link %><br />
+    <%= f.text_field :arcgis_link, class: 'long-text' %>
+  </p>
+
+  <p>
+    <%= f.label :wms_server %><br />
+    <%= f.text_field :wms_server, class: 'long-text' %>
+  </p>
+
+  <p>
+    <%= f.label :wms_name %><br />
+    <%= f.text_field :wms_name %>
+  </p>
+
+  <p>
+    <%= f.label :styles, label: 'Map Style Parameter' %><br />
+    <%= f.text_field :styles %>
+  </p>
+
+  <p>
+    <%= f.label :view_params %><br />
+    <%= f.text_field :view_params %>
+  </p>
+
+  <p>
+    <%= f.label :layer_color %><br />
+    <%= f.text_field :layer_color, type: 'color' %>
+  </p>
+
+  <p>
+    <%= f.label :wfs %><br />
+    <%= f.text_field :wfs %>
+  </p>
+  <p>
+    <%= f.label :meta_download %><br />
+    <%= f.text_field :meta_download %>
+  </p>
+
+  <p>
+    <%= f.label :has_legend %><br />
+    <%= f.check_box :has_legend %>
+  </p>
+
+  <p>
+    <%= f.label 'Use constraints' %><br />
+    <%= f.text_area :licence_desc %>
+    <br /><small>To add links, use the format "text":http://example.com</small>
+  </p>
+
+  <p>
+    <%= f.label :image %><br />
+    <%= f.file_field :image %><br/>
+    <small>Current image:</small>
+    <%= image_tag @dataset.image.url if @dataset.image.present? %>
+  </p>
+
+  <p>
+  <%= f.label :delete_image %><br />
+    <%= f.check_box :delete_image %>
+  </p>
+
+  </p>
+  <p>
+    <%= f.submit 'Submit' %>
+  </p>
+<% end %>

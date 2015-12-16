@@ -1,0 +1,16 @@
+div#error_flash {
+  background: #FFC;
+  border-bottom: 2px solid #F90;
+  color: #F90;
+  font: normal normal normal 13px/normal ;
+  padding: 12px 0px;
+  position: absolute;
+  text-align: center;
+  top: 0px;
+  width: 100%;
+  z-index: 10;
+}
+
+.olLayerGoogleCopyright {
+  top: -100000px;
+}

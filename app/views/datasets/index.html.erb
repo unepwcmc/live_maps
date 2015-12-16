@@ -1,0 +1,129 @@
+<% content_for :map_controls do %>
+  <div ng-controller="SearchCtrl">
+    <div class="search-results" ng-controller="DatasetsListingCtrl">
+      <h1>Select dataset(s) to view </h1>
+
+      <div id="scrollable_databases" class="scroll-pane">
+        <ul class="dataset-list">
+          <li ng-repeat="dataset in layers" ng-class="['type' + dataset.id, dataset.visible && 'active']">
+              <div class="dataset-info" ng-click="toggleLayerVisibility(dataset)">
+                <div class="title">
+                  {{ dataset.title }}
+                </div>
+                <p ng-show="dataset.dataCategories" class="categories">
+                  <span ng-repeat="category in dataset.dataCategories" ng-class="['category', category.description && 'with-tooltip']">
+                    <span class="name">{{ category.name }}</span>{{ $last ? '' : ',' }}
+                    <span ng-show="category.description" class="tooltip-container">
+                      <span class="tooltip">{{ category.description }}</span>
+                    </span>
+                  </span>
+                </p>
+                <p ng-show="dataset.creationDate"><span class="bold">Publication date:</span> <span ng-bind="dataset.creationDate"></span></p>
+                <p ng-show="dataset.version"><span class="bold">Version:</span> <span ng-bind="dataset.version"></span></p>
+                <div class="format">
+                  <div ng-show="dataset.recentlyUpdated" class="tag tag-updated">Updated</div>
+                  <div ng-show="dataset.recentlyCreated" class="tag tag-new">New</div>
+                  <span ng-show="dataset.dataFormats" ng-repeat="category in dataset.dataFormats">
+                    <span ng-class="['capitalize', 'prepend-symbol', category.name]">{{ category.name }}</span>{{ $last ? '' : ',&nbsp;' }}
+                  </span>
+                </div>
+
+                <div ng-class="['additional-info', dataset.showingMore && 'visible']">
+
+                  <a ng-href="{{ dataset.url }}" class="btn btn-white">View dataset detail</a>
+                  <p ng-show="dataset.timeRangeStart || dataset.timeRangeEnd"><span class="label">Temporal range:</span> <span ng-bind="dataset.timeRange"></span></p>
+                  <p ng-show="dataset.observationTypes" class="prepend-pipe capitalize">
+                    <span class="label">Data type:</span>
+                    <span ng-repeat="otype in dataset.observationTypes" class="category">
+                      {{ otype.name }}{{ $last ? '' : ',' }}
+                    </span>
+                  </p>
+                  <p ng-show="dataset.dataProvider"><span class="label">Contact organisation:</span> <span ng-bind="dataset.dataProvider"></span></p>
+                </div> <!-- .additional-info -->
+              </div> <!-- .dataset-info -->
+          </li>
+        </ul>
+      </div> <!-- #scrollable_databases .scroll-pane -->
+    </div><!-- .search-results -->
+
+    <div class="map-search" click-anywhere-but-here="closeFilters()">
+      <h1 ng-show="!showingFilters" ng-click="showingFilters=!showingFilters" class="open-filters">
+        <i class="icon-filter"></i>
+        Search & Filter
+      </h1>
+      <h1 ng-show="shouldShowResetButton()" ng-click="reset()" class="reset-filters">
+        <i class="icon-cancel"></i>
+        Reset filters
+      </h1>
+      <h1 ng-class="['close-filters', showingFilters && 'visible']" ng-click="showingFilters=!showingFilters">
+        <i class="icon-filter"></i>
+        Dataset search & filters
+        <i class="icon-angle-circled-left"></i>
+      </h1>
+      <div ng-class="['filters', showingFilters && 'visible']">
+        <div class="filters-container">
+          <%= form_for @search, url: '' do |f| %>
+            <p>
+              <%= f.label "Search", class: 'first-level'%>
+              <input type="text" ng-model="filters.text_search" class='search-filter'>
+            </p>
+            <p>
+              <%= f.label 'Sort by', class: 'first first-level' %>
+              <div ng-model="filters.sort_by" ng-click="toggleOptions()" class="filter-select">
+                {{ filters.sort_by.text }}
+                <i ng-class="showingOptions ? 'icon-angle-up' : 'icon-angle-down'"></i>
+              </div>
+              <div ng-class="['options', showingOptions && 'visible']">
+                <div class="options-container">
+                  <div data-value="{{option.id}}" ng-repeat="option in sortByOptions" ng-click="select(option); toggleOptions()" class="option">
+                    {{ option.text }}
+                  </div>
+                </div>
+              </div>
+            </p>
+            <p>
+              <%= f.label 'Category', class: 'first-level' %>
+              <multi-selector name="datcat" model="filters.data_categories">
+                <% data_categories.each do |dt| %>
+                  <check-option name="datcat" model="<%= 'filters.data_categories["' + dt.id.to_s + '"]' %>" value="<%= dt.id %>"><%= dt.name %></check-option>
+                <% end %>
+              </multi-selector>
+            </p>
+            <p>
+              <%= f.label 'Format', class: 'first-level' %>
+              <multi-selector name="formats" model="filters.formats">
+                <% data_formats.each do |fo| %>
+                  <check-option name="formats" model="<%= 'filters.formats["' + fo.id.to_s + '"]' %>" value="<%= fo.id %>"><%= fo.name %></check-option>
+                <% end %>
+              </multi-selector>
+            </p>
+            <div ng-show="showingAdvanced">
+              <p>
+                <%= f.label 'Data type', class: 'first-level' %>
+                <multi-selector name="otypes" model="filters.observation_types">
+                  <% observation_types.each do |ot| %>
+                    <check-option name="otypes" model="<%= 'filters.observation_types["' + ot.id.to_s + '"]' %>" value="<%= ot.id %>"><%= ot.name %></check-option>
+                  <% end %>
+                </multi-selector>
+              </p>
+              <p>
+                <%= f.label 'Geographical range', class: 'first-level' %>
+                <multi-selector name="geo_range" model="filters.geographical_ranges">
+                  <% geographical_ranges.each do |gr| %>
+                    <check-option model="<%= 'filters.geographical_ranges["' + gr.id.to_s + '"]' %>" name="geo_range" value="<%= gr.id %>"><%= gr.name %></check-option>
+                  <% end %>
+                </multi-selector>
+              </p>
+            </div>
+            <button type="button" ng-hide="showingAdvanced" ng-click="showingAdvanced=!showingAdvanced" class="btn btn-white">Advanced filters</button>
+            <br/>
+            <button ng-click="doSearch({isUserSearch: true})" class="btn">Search</button>
+            <button ng-click="reset()" class="btn btn-white">Reset</button>
+          <% end %>
+        </div> <!-- .filters-container -->
+      </div> <!-- .filters -->
+    </div>
+  </div><!-- SearchCtrl -->
+<% end %>
+
+<% content_for :body_class do %> big-map <% end %>

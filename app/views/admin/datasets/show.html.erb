@@ -1,0 +1,151 @@
+<p>
+  <b>Title:</b>
+  <%=h @dataset.title %>
+</p>
+
+<p>
+  <b>Alternative Search Keywords:</b>
+</p>
+<p>
+  <% @dataset.tags.each do |tag| %>
+    <span class="tag"><%= tag %></span>
+  <% end %>
+</p>
+
+<p>
+  <b>Version:</b>
+  <%= @dataset.version %>
+</p>
+
+<p>
+  <b>Short desc:</b>
+  <%= RedCloth.new(@dataset.short_desc).to_html.html_safe %>
+</p>
+
+<p>
+  <b>Long desc:</b>
+  <%= RedCloth.new(@dataset.long_desc).to_html.html_safe %>
+</p>
+
+<p>
+  <b>Citation:</b>
+  <%= RedCloth.new(@dataset.metadata_description).to_html.html_safe %>
+</p>
+
+<p>
+  <b>Shp download:</b>
+  <%=h @dataset.shp_download %>
+</p>
+
+<p>
+  <b>Arcgis.com link:</b>
+  <%=h @dataset.arcgis_link %>
+</p>
+
+<p>
+  <b>Wms server:</b>
+  <%=h @dataset.wms_server %>
+</p>
+
+<p>
+  <b>Wms name:</b>
+  <%=h @dataset.wms_name %>
+</p>
+
+<p>
+  <b>Styles:</b>
+  <%=h @dataset.styles %>
+</p>
+
+<p>
+  <b>View params:</b>
+  <%=h @dataset.view_params %>
+</p>
+
+<p>
+  <b>Wfs:</b>
+  <%=h @dataset.wfs %>
+</p>
+
+<p>
+  <b>Meta download:</b>
+  <%=h @dataset.meta_download %>
+</p>
+
+<p>
+  <b>Factsheet:</b>
+  <%=h @dataset.factsheet_url %>
+</p>
+
+<p>
+  <b>Has Legend?:</b>
+  <%=h @dataset.has_legend? %>
+</p>
+
+<p>
+  <b>Use constraints:</b>
+  <%=h @dataset.licence_desc %>
+</p>
+
+<p>
+  <b>Publication date:</b>
+  <%= @dataset.creation_date %>
+</p>
+
+<p>
+  <b>Time range:</b>
+  <%= @dataset.time_range_start %>-<%= @dataset.time_range_end %>
+</p>
+
+<p>
+  <b>Data categories:</b>
+  <%= @dataset.data_categories.map(&:name).map(&:capitalize).join(', ') %>
+</p>
+
+<p>
+  <b>Formats:</b>
+  <%= @dataset.data_formats.map(&:name).map(&:capitalize).join(', ') %>
+</p>
+
+<p>
+  <b>Geographical range:</b>
+  <%= @dataset.geographical_range.to_s.capitalize %>
+</p>
+
+
+<p>
+  <b>Data types:</b>
+  <%= @dataset.observation_types.map(&:name).map(&:capitalize).join(', ') %>
+</p>
+
+
+<%= link_to 'Edit', edit_admin_dataset_path(@dataset), :class=> "button" %>
+<%= link_to 'Back', admin_datasets_path, :class=> "button" %>
+<br />
+<br />
+<br />
+<br />
+
+<h3 style="border-top: 2px solid #3174AF; margin-bottom:0em;">Linked Desicions</h3>
+<%= link_to 'Link to another decision', new_admin_dataset_datasets_decision_path(@dataset), :class=> "button" %>
+<table>
+  <tr>
+    <th>Decision</th>
+    <th>Category</th>
+    <th>&nbsp;</th>
+  </tr>
+
+<% @linked_decisions.each do |datasets_decision| %>
+  <tr>
+    <% if datasets_decision.decision %>
+      <td><%= link_to datasets_decision.decision.name, [:admin, datasets_decision.decision] %></td>
+      <td><%= (link_to datasets_decision.category.try(:name), [:admin, datasets_decision.category]) if datasets_decision.category.present? %></td>
+      <td>
+        <%= link_to 'Show', [:admin, datasets_decision] %>
+        <%= link_to 'Edit', edit_admin_datasets_decision_path(datasets_decision) %>
+        <%= link_to 'Destroy', [:admin,datasets_decision], :confirm => 'Are you sure?', :method => :delete %>
+      </td>
+    <% end %>
+  </tr>
+<% end %>
+</table>

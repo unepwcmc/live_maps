@@ -1,0 +1,48 @@
+header
+  width: 100%
+  background: $blue
+  color: white
+  font-size: 17px
+  padding: .65em 1.5em
+  height: 60px
+  margin: 0
+  z-index: 5
+  position: relative
+
+  .logo
+    width: 75px
+    height: 38px
+    background: image-url('logo.png') no-repeat
+
+    @media #{$retina}
+      background-image: image-url('logo@2x.png')
+      background-size: 75px 38px
+
+  a
+    color: white
+    text-decoration: none
+
+  .logo, h1
+    display: inline-block
+    vertical-align: middle
+
+  & > a, h1
+    position: absolute
+    top: 21.5px
+    opacity: .8
+    transition: all .5s
+
+  & > a:hover, h1:hover
+    opacity: 1
+
+  h1
+    font-size: 1.2em
+    font-family: 'MuseoSans-500'
+    text-transform: uppercase
+    text-align: center
+    width: 210px
+    left: 50%
+    margin-left: -105px
+
+  & > a
+    right: 2em
