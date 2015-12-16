@@ -1,4 +1,4 @@
-Ocean Data Viewer
+Live Maps
 ======
 
 [![Code Climate](https://codeclimate.com/github/unepwcmc/ocean-data-viewer/badges/gpa.svg)](https://codeclimate.com/github/unepwcmc/ocean-data-viewer)
