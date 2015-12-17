@@ -20,7 +20,8 @@ var Map = function(target, baseLayer) {
     this.map.setMaxBounds(bounds);
 
     L.esri.tiledMapLayer({
-        url: "http://unepliveservices.unep.org/arcgis/rest/services/UNBasemap/MapServer/16"
+        url: "http://unepliveservices.unep.org/arcgis/rest/services/UNBasemap/MapServer",
+        maxZoom: 18
       }).addTo(this.map);
   };
 
