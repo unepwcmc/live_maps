@@ -20,8 +20,7 @@ var Map = function(target) {
     this.map.setMaxBounds(bounds);
 
     L.esri.tiledMapLayer({
-        url: "http://unepliveservices.unep.org/arcgis/rest/services/UNBasemap/MapServer",
-        maxZoom: 18
+        url: "http://unepliveservices.unep.org/arcgis/rest/services/UNBasemap/MapServer"
       }).addTo(this.map);
   };
 
@@ -53,7 +52,8 @@ var Map = function(target) {
         viewParams: options.viewParams
       });
     } else {
-      layers[layerName] = new L.esri.tiledMapLayer(options.wmsServer, {
+      layers[layerName] = new L.esri.tiledMapLayer({
+        url: options.wmsServer,
         opacity : 1
       });
     }
