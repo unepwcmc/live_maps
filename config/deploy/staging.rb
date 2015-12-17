@@ -3,8 +3,8 @@ set :stage, :staging
 server "web-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{app web db}
 server "db-staging.linode.unep-wcmc.org", user: 'wcmc', roles: %w{bkp}, no_release: true
 
-set :application, "ocean-data-viewer"
-set :server_name, "ocean-data-viewer.web-staging.linode.unep-wcmc.org"
+set :application, "live_maps"
+set :server_name, "liva_maps.web-staging.linode.unep-wcmc.org"
 set :sudo_user, "wcmc"
 set :app_port, "80"
 

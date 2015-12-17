@@ -9,7 +9,7 @@ This app is based in Ocean Data Viewer[https://github.com/unepwcmc/ocean-data-vi
 
 # Installation
 
-Live Maps is a pretty standard Rails application, backed by a Postgres database, with the [paperclip](https://github.com/thoughtbot/paperclip) gem to manage attachments. To run Ocean Data Viewer, make sure to have [ImageMagick](https://github.com/thoughtbot/paperclip#image-processor) installed, and then proceed with the usual commands:
+Live Maps is a pretty standard Rails application, backed by a Postgres database, with the [paperclip](https://github.com/thoughtbot/paperclip) gem to manage attachments. To run Live Maps, make sure to have [ImageMagick](https://github.com/thoughtbot/paperclip#image-processor) installed, and then proceed with the usual commands:
 ```
 $ git clone https://github.com/unepwcmc/live_maps.git live_maps
 $ cd live_maps

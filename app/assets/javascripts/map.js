@@ -1,4 +1,4 @@
-var Map = function(target, baseLayer) {
+var Map = function(target) {
   var options = {
       minZoom: 2,
       maxZoom: 18,

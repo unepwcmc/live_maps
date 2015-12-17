@@ -1,4 +1,4 @@
-OceanDataViewer::Application.routes.draw do
+LiveMaps::Application.routes.draw do
 
   root 'datasets#index'
 

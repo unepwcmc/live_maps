@@ -1,8 +1,8 @@
 # config valid only for current version of Capistrano
 lock '3.4.0'
 
-set :application, 'ocean-data-viewer'
-set :repo_url, 'git@github.com:unepwcmc/ocean-data-viewer.git'
+set :application, 'live_maps'
+set :repo_url, 'git@github.com:unepwcmc/live_maps.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
