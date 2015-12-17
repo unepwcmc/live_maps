@@ -2,7 +2,7 @@
 # Check out https://github.com/42dev/bower-rails#ruby-dsl-configuration for more options
 
 asset 'leaflet'
-asset 'esri-leaflet', '0.0.1-beta.4'
+asset 'esri-leaflet'
 asset 'angular'
 asset 'angularjs-rails-resource'
 asset 'spectrum'

@@ -86,7 +86,7 @@
                         <% end %>
 
                         <% if @dataset.arcgis_link.present? %>
-                          <%= link_to @dataset.arcgis_link, :class=>"btn tipsy", :style => "padding: 0px", :target => '_blank', :title => 'Click here to view this dataset on Arcgis.com. To add other layers from Ocean Data Viewer, click the "Add" button and search for the dataset titles' do %> <span class="icon-esri-white"></span> ArcGIS<% end %>
+                          <%= link_to @dataset.arcgis_link, :class=>"btn tipsy", :style => "padding: 0px", :target => '_blank', :title => 'Click here to view this dataset on Arcgis.com. To add other layers from Live Maps, click the "Add" button and search for the dataset titles' do %> <span class="icon-esri-white"></span> ArcGIS<% end %>
                         <% end %>
                     </div>
                     <% if @dataset.has_legend? %>
