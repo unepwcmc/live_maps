@@ -1,13 +1,15 @@
 Live Maps
 ======
 
+This app is based in Ocean Data Viewer[https://github.com/unepwcmc/ocean-data-viewer]
+
 [![Code Climate](https://codeclimate.com/github/unepwcmc/ocean-data-viewer/badges/gpa.svg)](https://codeclimate.com/github/unepwcmc/ocean-data-viewer)
 [![Test Coverage](https://codeclimate.com/github/unepwcmc/ocean-data-viewer/badges/coverage.svg)](https://codeclimate.com/github/unepwcmc/ocean-data-viewer/coverage)
 [![Dependency Status](https://gemnasium.com/unepwcmc/ocean-data-viewer.svg)](https://gemnasium.com/unepwcmc/ocean-data-viewer)
 
 # Installation
 
-Ocean Data Viewer is a pretty standard Rails application, backed by a Postgres database, with the [paperclip](https://github.com/thoughtbot/paperclip) gem to manage attachments. To run Ocean Data Viewer, make sure to have [ImageMagick](https://github.com/thoughtbot/paperclip#image-processor) installed, and then proceed with the usual commands:
+Live Maps is a pretty standard Rails application, backed by a Postgres database, with the [paperclip](https://github.com/thoughtbot/paperclip) gem to manage attachments. To run Ocean Data Viewer, make sure to have [ImageMagick](https://github.com/thoughtbot/paperclip#image-processor) installed, and then proceed with the usual commands:
 ```
 $ git clone https://github.com/unepwcmc/ocean-data-viewer.git ocean-data-viewer
 $ cd ocean-data-viewer

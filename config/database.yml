@@ -8,16 +8,16 @@ default: &default
 
 development:
   <<: *default
-  database: ocean_data_viewer_development
+  database: live_maps_development
 
 test:
   <<: *default
-  database: ocean_data_viewer_test
+  database: live_maps_test
 
 production:
   <<: *default
-  database: ocean_data_viewer_production
+  database: live_maps_production
 
 staging:
   <<: *default
-  database: ocean_data_viewer_staging
+  database: live_maps_staging

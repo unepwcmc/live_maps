@@ -26,8 +26,7 @@
     <% end %>
     <header>
       <div class="logo"></div>
-      <h1><a href="/">Ocean Data Viewer</a></h1>
-      <%= link_to "About the site", about_path %>
+      <h1><a href="/">UNEP Live Demo</a></h1>
     </header>
 
     <div class="map">
@@ -41,24 +40,6 @@
     <%= yield :map %>
 
     <%= yield %>
-
-    <footer>
-      <%= link_to image_tag('proteus_sm.gif'), "http://www.proteuspartners.org/?page_id=100" %>&nbsp;&nbsp;&nbsp;
-      <a href="http://www.unep-wcmc.org/" target="_blank" class="wcmc_unep"></a>
-      <div class="reserved">
-        <p>All rights reserved.</p>
-        <p>UNEP</p>
-        <p><a class="terms" href="http://beta.unep-wcmc.org/terms-and-conditions">Terms and Conditions</a></p>
-      </div>
-      <div class="disclaimer">
-        <p>The designations employed and the presentation of material on this
-          map do not imply the expression of any opinion whatsoever on the part
-          of the Secretariat of the United Nations concerning the legal status of
-          any country, territory, city or area or of its authorities, or concerning
-          the delimitation of its frontiers or boundaries.
-        </p>
-      </div>
-    </footer>
 
     <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
     <%= render 'layouts/google_analytics' %>
