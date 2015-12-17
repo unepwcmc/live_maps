@@ -1,22 +1,13 @@
 var Map = function(target, baseLayer) {
-
   var options = {
       minZoom: 2,
-      maxZoom: 8,
+      maxZoom: 18,
       zoom: 3,
       center: new L.latLng(0, 0),
       scrollWheelZoom: false,
       zoomControl: false
-  },
-  layers = {};
-
-  var backgroundOpacity = 0.3;
-
-  var accessToken = "pk.eyJ1IjoidW5lcHdjbWMiLCJhIjoiRXg1RERWRSJ9.taTsSWwtAfFX_HMVGo2Cug";
-
-  var mapLabels = L.tileLayer('https://api.mapbox.com/v4/unepwcmc.o308nbjb/{z}/{x}/{y}.png?access_token=' + accessToken, {
-    attribution: '<a href="http://www.mapbox.com/about/maps/" target="_blank">Terms &amp; Feedback</a>'
-  });
+    },
+    layers = {};
 
   this.map = null;
 
@@ -28,13 +19,9 @@ var Map = function(target, baseLayer) {
     this.map = new L.map(target, options);
     this.map.setMaxBounds(bounds);
 
-    L.tileLayer.wms("http://www.gebco.net/data_and_products/gebco_web_services/web_map_service/mapserv?", {
-      layers: 'GEBCO_LATEST',
-      format: 'image/png',
-      opacity: backgroundOpacity
-    }).addTo(this.map);
-
-    mapLabels.addTo(this.map);
+    L.esri.tiledMapLayer({
+        url: "http://unepliveservices.unep.org/arcgis/rest/services/UNBasemap/MapServer/16"
+      }).addTo(this.map);
   };
 
   this.zoomIn = function() {
@@ -78,7 +65,6 @@ var Map = function(target, baseLayer) {
           this.map.removeLayer(layerObject);
         } else {
           this.map.addLayer(layerObject);
-          mapLabels.bringToFront();
         }
       }
     }.bind(this));
