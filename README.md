@@ -3,9 +3,9 @@ Live Maps
 
 This app is based in Ocean Data Viewer[https://github.com/unepwcmc/ocean-data-viewer]
 
-[![Code Climate](https://codeclimate.com/github/unepwcmc/ocean-data-viewer/badges/gpa.svg)](https://codeclimate.com/github/unepwcmc/ocean-data-viewer)
-[![Test Coverage](https://codeclimate.com/github/unepwcmc/ocean-data-viewer/badges/coverage.svg)](https://codeclimate.com/github/unepwcmc/ocean-data-viewer/coverage)
-[![Dependency Status](https://gemnasium.com/unepwcmc/ocean-data-viewer.svg)](https://gemnasium.com/unepwcmc/ocean-data-viewer)
+[![Code Climate](https://codeclimate.com/github/unepwcmc/live_maps/badges/gpa.svg)](https://codeclimate.com/github/unepwcmc/live_maps)
+[![Test Coverage](https://codeclimate.com/github/unepwcmc/live_maps/badges/coverage.svg)](https://codeclimate.com/github/unepwcmc/live_maps/coverage)
+[![Dependency Status](https://gemnasium.com/unepwcmc/live_maps.svg)](https://gemnasium.com/unepwcmc/live_maps)
 
 # Installation
 
