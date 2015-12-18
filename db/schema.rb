@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150717153253) do
+ActiveRecord::Schema.define(version: 20151218113030) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,6 +113,7 @@ ActiveRecord::Schema.define(version: 20150717153253) do
     t.string   "factsheet_url"
     t.text     "tags",                   default: [],   array: true
     t.string   "version",                default: "NA"
+    t.integer  "programme_id"
   end
 
   create_table "datasets_decisions", force: :cascade do |t|
@@ -152,6 +153,10 @@ ActiveRecord::Schema.define(version: 20150717153253) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "programmes", force: :cascade do |t|
+    t.string "name"
   end
 
   create_table "site_links", force: :cascade do |t|
