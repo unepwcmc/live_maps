@@ -8,7 +8,7 @@ set :repo_url, 'git@github.com:unepwcmc/live_maps.git'
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 
-set :branch, 'server-migration'
+set :branch, 'master'
 
 set :deploy_user, 'wcmc'
 
