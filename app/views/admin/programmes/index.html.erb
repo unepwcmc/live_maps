@@ -1,0 +1,22 @@
+<h1>Listing programmes</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+  </tr>
+
+<% @programmes.each do |programme| %>
+  <tr>
+    <td><%= programme.name %></td>
+    <td><%= truncate(programme.description, lenght: 300) %></td>
+    <td><%= link_to 'Show', [:admin,programme] %></td>
+    <td><%= link_to 'Edit', edit_admin_programme_path(programme) %></td>
+    <td><%= link_to 'Destroy', [:admin,programme], :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Programme', new_admin_programme_path, :class=> "button" %>

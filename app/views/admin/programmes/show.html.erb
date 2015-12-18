@@ -1,0 +1,11 @@
+<p>
+  <b>Name:</b>
+  <%= @programme.name %>
+</p>
+<p>
+  <b>Description:</b>
+  <%= @programme.description %>
+</p>
+
+<%= link_to 'Edit', edit_admin_programme_path(@programme), :class=> "button" %>
+<%= link_to 'Back', admin_programmes_path, :class=> "button" %>

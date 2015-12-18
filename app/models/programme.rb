@@ -1,3 +1,3 @@
 class Programme < ActiveRecord::Base
-  belongs_to :dataset
+  has_many :datasets
 end

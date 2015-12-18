@@ -59,6 +59,11 @@
   </p>
 
   <p class="options">
+    <%= f.label :programme %><br/>
+    <%= f.collection_select :programme_id, Programme.all, :id, :name %>
+  </p>
+
+  <p class="options">
     <%= f.label :data_categories %><br/>
     <%= f.collection_check_boxes :data_category_ids, data_categories, :id, :name %>
   </p>
