@@ -56,9 +56,8 @@ set :keep_releases, 5
 
 set :passenger_restart_with_touch, false
 
-after 'deploy:setup', :symlink_env
-
-desc "Symlinks .env"
 task :symlink_env, :roles => :app do
-  run "ln -nfs #{deploy_to}/shared/.env #{release_path}/config/.env"
+  run "ln -nfs #{shared_path}/shared/.env #{latest_release}/.env"
 end
+
+after 'deploy:setup', :symlink_env
